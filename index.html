@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Godwin Ashiekaa — Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Scripts moved to the end of <body> for better loading and to preserve Tailwind config ordering -->
+</head>
+
+<body class="font-sans">
+
+  <!-- === NAVIGATION === -->
+  <header id="siteNav"
+    class="fixed top-0 left-0 w-full z-[1000] bg-bg/40 backdrop-blur-md">
+    
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <div class="text-xl font-heading tracking-[.2em] cursor-pointer">
+        DEV • GODWIN
+      </div>
+
+      <!-- Desktop links -->
+      <nav class="hidden md:flex gap-8 text-textLight text-sm">
+        <a href="#projects" class="nav-link">Work</a>
+        <a href="#process" class="nav-link">Process</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Hamburger -->
+      <button id="navButton"
+        class="md:hidden text-3xl cursor-pointer">
+        ☰
+      </button>
+    </div>
+  </header>
+
+
+<!-- === MOBILE NAV PANEL === -->
+<div id="mobileNav"
+  class="fixed inset-0 z-[2000] bg-bg/95 backdrop-blur-lg
+         opacity-0 pointer-events-none transition-opacity duration-300">
+
+  <button id="navClose"
+    class="absolute top-6 right-6 text-3xl cursor-pointer">
+    ✕
+  </button>
+
+  <nav class="h-full flex flex-col items-center justify-center gap-10 text-2xl">
+    <a href="#projects" class="mobile-link">Work</a>
+    <a href="#process" class="mobile-link">Process</a>
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+  </nav>
+</div>
+
+
+
+  <!-- === HERO SECTION === -->
+  <section id="hero" class="min-h-screen flex flex-col items-center justify-center text-center px-6 reveal">
+  <div class="max-w-3xl">
+    <h1 id="heroTitle" class="text-5xl md:text-7xl font-heading tracking-wide leading-tight mb-6">
+      <!-- typed text goes here -->
+      <span id="cursor" class="inline-block w-1 bg-accent ml-1"></span>
+    </h1>
+
+    <p id="heroSub"
+       class="text-lg md:text-xl text-textLight leading-relaxed opacity-0 transition-opacity duration-700">
+      Code meets design. Interfaces that simply feel right.
+    </p>
+
+    <button
+    class="mt-10 bg-accent text-black px-7 py-4 rounded-xl font-semibold tracking-wide hover:bg-accentSoft transition-all duration-300 accent-btn">
+    <a href="#projects">Explore The Work</a>
+    </button>
+  </div>
+</section>
+
+
+<!-- === PROJECTS SECTION === -->
+<section id="projects" class="pt-32 pb-20 px-8 md:px-16 reveal">
+  <h2 class="text-4xl md:text-6xl font-heading mb-12 text-center">
+    Selected Work
+  </h2>
+
+  <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+    
+    <!-- Travel Agency -->
+    <div class="project-card opacity-0 translate-y-6 transition duration-700 tilt-card" data-project="travelAgency">
+      <div class="project-inner bg-surface/70 backdrop-blur-md rounded-2xl p-6 border border-[#2a2a2a]">
+        <h3 class="text-xl font-bold mb-2">Travel Agency Demo</h3>
+        <p class="text-textLight mb-4">
+          Modern landing page for a travel agency with featured cities & hero layout.
+        </p>
+        <span class="text-sm text-accent font-semibold">Tech:</span>
+        <p class="text-sm text-textLight mb-4">
+          HTML • TailwindCSS • JavaScript
+        </p>
+        <a href="https://godwinash.github.io/travel_agency_demo/" target="_blank"
+           class="px-4 py-2 bg-accent text-black rounded-md text-sm font-semibold accent-btn accent-btn--sm">
+          Live Demo
+        </a>
+      </div>
+    </div>
+
+    <!-- Yum -->
+    <div class="project-card opacity-0 translate-y-6 transition duration-700 tilt-card" data-project="yum">
+      <div class="project-inner bg-surface/70 backdrop-blur-md rounded-2xl p-6 border border-[#2a2a2a]">
+        <h3 class="text-xl font-bold mb-2">Yum Brand Redesign</h3>
+        <p class="text-textLight mb-4">
+          UI redesign for a fast-food brand with modern layout and improved readability.
+        </p>
+        <span class="text-sm text-accent font-semibold">Tech:</span>
+        <p class="text-sm text-textLight mb-4">
+          HTML • TailwindCSS • JavaScript
+        </p>
+        <a href="https://godwinash.github.io/yum-demo/" target="_blank"
+           class="px-4 py-2 bg-accent text-black rounded-md text-sm font-semibold accent-btn accent-btn--sm">
+          Live Demo
+        </a>
+      </div>
+    </div>
+
+    <!-- Gamified -->
+    <div class="project-card opacity-0 translate-y-6 transition duration-700 tilt-card" data-project="gamifiedTodo">
+      <div class="project-inner bg-surface/70 backdrop-blur-md rounded-2xl p-6 border border-[#2a2a2a]">
+        <h3 class="text-xl font-bold mb-2">Gamified To-Do List</h3>
+        <p class="text-textLight mb-4">
+          A productivity tool that turns tasks into interactive points and levels.
+        </p>
+        <span class="text-sm text-accent font-semibold">Tech:</span>
+        <p class="text-sm text-textLight mb-4">
+          HTML • TailwindCSS • JavaScript
+        </p>
+        <a href="https://godwinash.github.io/gamified-to-do-list/" target="_blank"
+           class="px-4 py-2 bg-accent text-black rounded-md text-sm font-semibold accent-btn accent-btn--sm">
+          Live Demo
+        </a>
+      </div>
+    </div>
+
+    <!-- AI Coffee -->
+    <div class="project-card opacity-0 translate-y-6 transition duration-700 tilt-card" data-project="aiCoffee">
+      <div class="project-inner bg-surface/70 backdrop-blur-md rounded-2xl p-6 border border-[#2a2a2a]">
+        <h3 class="text-xl font-bold mb-2">AI Coffee</h3>
+        <p class="text-textLight mb-4">
+          AI-powered tool that recommends coffee recipes based on mood.
+        </p>
+        <span class="text-sm text-accent font-semibold">Tech:</span>
+        <p class="text-sm text-textLight mb-4">
+          HTML • TailwindCSS • JavaScript
+        </p>
+        <a href="https://godwinash.github.io/AI-Coffee/" target="_blank"
+           class="px-4 py-2 bg-accent text-black rounded-md text-sm font-semibold accent-btn accent-btn--sm">
+          Live Demo
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- === PROJECT MODAL & LIGHTBOX === -->
+<div id="projectModal"
+     class="fixed inset-0 hidden bg-black/80 backdrop-blur-md z-[500] flex items-center justify-center">
+  
+    <!-- Modal Box -->
+    <div class="modal-content relative w-[90%] md:w-[760px] max-h-[90vh] bg-[#0d0d0d] rounded-2xl border border-[#2f2f2f] overflow-y-auto shadow-xl">
+      
+      <!-- Close Button -->
+      <button id="modalClose" 
+        class="absolute top-4 right-4 text-gray-300 hover:text-accent text-2xl">
+        ✕
+      </button>
+
+      <!-- Modal Body -->
+      <div class="p-6 space-y-6" id="modalInner"></div>
+    </div>
+    <!-- LIGHTBOX SLIDER -->
+  <div id="lightbox"
+    class="fixed inset-0 hidden bg-black/80 backdrop-blur-md z-[600] flex items-center justify-center select-none">
+
+    <div class="relative w-[92%] max-w-4xl">
+      <!-- Close -->
+      <button id="lightboxClose" 
+        class="absolute top-4 right-4 text-gray-200 hover:text-accent text-3xl font-light">
+        ✕
+      </button>
+
+      <!-- PREV -->
+      <button id="lightPrev"
+        class="absolute left-2 top-1/2 -translate-y-1/2 text-4xl text-gray-300 hover:text-accent font-thin px-2">
+        ‹
+      </button>
+
+      <!-- NEXT -->
+      <button id="lightNext"
+        class="absolute right-2 top-1/2 -translate-y-1/2 text-4xl text-gray-300 hover:text-accent font-thin px-2">
+        ›
+      </button>
+
+      <!-- Image -->
+      <img id="lightImg"
+        class="w-full max-h-[85vh] object-contain rounded-2xl shadow-xl transition duration-300" />
+    </div>
+</div>
+
+</div>
+
+  <!-- ============================
+     PROCESS SECTION (Alternating)
+============================ -->
+<section id="process" class="relative py-32 px-6 md:px-12 reveal">
+
+  <div class="max-w-4xl mx-auto text-center mb-20">
+    <h2 class="text-4xl md:text-5xl font-heading mb-4">My Process</h2>
+    <p class="text-textLight text-lg">A structured, thoughtful workflow from idea to polished experience.</p>
+  </div>
+
+  <!-- TIMELINE WRAPPER -->
+  <div class="relative max-w-5xl mx-auto">
+
+    <!-- Vertical animated line -->
+    <div id="process-line"
+         class="absolute top-0 left-1/2 -translate-x-1/2 w-[3px] h-0 bg-accent rounded-full transition-all duration-[1400ms]">
+    </div>
+
+    <div class="space-y-32">
+
+      <!-- STEP 1 - LEFT -->
+      <div class="process-step flex flex-col md:flex-row md:items-center opacity-0 translate-y-10 transition-all duration-700">
+        
+        <!-- Content -->
+        <div class="md:w-1/2 md:pr-16 text-center md:text-right">
+          <h3 class="text-2xl font-semibold mb-3">Discover</h3>
+          <p class="text-textLight leading-relaxed">
+            Understanding goals, audience, and constraints.
+            This ensures clarity before writing any code.
+          </p>
+        </div>
+
+        <!-- Icon + dot -->
+        <div class="relative mx-auto md:mx-0 md:w-1/2 flex justify-center md:justify-start">
+          <div class="relative">
+            <!-- Dot -->
+            <div class="w-5 h-5 bg-accent rounded-full absolute left-1/2 -translate-x-1/2 -top-2"></div>
+
+            <!-- Icon -->
+            <svg class="w-10 h-10 text-accent mt-6" fill="none" stroke="currentColor" stroke-width="1.5"
+                 viewBox="0 0 24 24">
+              <path d="M21 21l-4.35-4.35M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"/>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- STEP 2 - RIGHT -->
+      <div class="process-step flex flex-col md:flex-row md:items-center opacity-0 translate-y-10 transition-all duration-700">
+        
+        <!-- Icon -->
+        <div class="relative mx-auto md:mx-0 md:w-1/2 flex justify-center md:justify-end order-2 md:order-1">
+          <div class="relative">
+            <div class="w-5 h-5 bg-accent rounded-full absolute left-1/2 -translate-x-1/2 -top-2"></div>
+
+            <svg class="w-10 h-10 text-accent mt-6" fill="none" stroke="currentColor" stroke-width="1.5"
+                 viewBox="0 0 24 24">
+              <path d="M4 16l4.586-4.586a2 2 0 0 1 2.828 0L16 16m-6-6l1.586-1.586a2 2 0 0 1 2.828 0L20 12M4 20h16"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="md:w-1/2 md:pl-16 text-center md:text-left order-1 md:order-2">
+          <h3 class="text-2xl font-semibold mb-3">Design</h3>
+          <p class="text-textLight leading-relaxed">
+            Crafting layouts, components, and interactions to create
+            a clear and intuitive experience.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- STEP 3 - LEFT -->
+      <div class="process-step flex flex-col md:flex-row md:items-center opacity-0 translate-y-10 transition-all duration-700">
+        
+        <!-- Content -->
+        <div class="md:w-1/2 md:pr-16 text-center md:text-right">
+          <h3 class="text-2xl font-semibold mb-3">Build</h3>
+          <p class="text-textLight leading-relaxed">
+            Translating design into performant and accessible code
+            using clean HTML, TailwindCSS, and JavaScript.
+          </p>
+        </div>
+
+        <!-- Icon -->
+        <div class="relative mx-auto md:mx-0 md:w-1/2 flex justify-center md:justify-start">
+          <div class="relative">
+            <div class="w-5 h-5 bg-accent rounded-full absolute left-1/2 -translate-x-1/2 -top-2"></div>
+
+            <svg class="w-10 h-10 text-accent mt-6" fill="none" stroke="currentColor" stroke-width="1.5"
+                 viewBox="0 0 24 24">
+              <path d="M8 7l-3 3 3 3m8-6 3 3-3 3M14 5l-4 14"/>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- STEP 4 - RIGHT -->
+      <div class="process-step flex flex-col md:flex-row md:items-center opacity-0 translate-y-10 transition-all duration-700">
+        
+        <!-- Icon -->
+        <div class="relative mx-auto md:mx-0 md:w-1/2 flex justify-center md:justify-end order-2 md:order-1">
+          <div class="relative">
+            <div class="w-5 h-5 bg-accent rounded-full absolute left-1/2 -translate-x-1/2 -top-2"></div>
+
+            <svg class="w-10 h-10 text-accent mt-6" fill="none" stroke="currentColor" stroke-width="1.5"
+                 viewBox="0 0 24 24">
+              <path d="M12 3v2m6.364 1.636l-1.414 1.414M21 12h-2M17.95 17.95l-1.414-1.414M12 19v2M6.364 17.95l1.414-1.414M5 12H3m3.05-5.95l1.414 1.414"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="md:w-1/2 md:pl-16 text-center md:text-left order-1 md:order-2">
+          <h3 class="text-2xl font-semibold mb-3">Refine</h3>
+          <p class="text-textLight leading-relaxed">
+            Polishing interactions, improving performance,
+            fixing edge cases, and ensuring the final product is smooth and delightful.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+    <!-- === ABOUT === -->
+<section id="about" class="py-32 px-6 md:px-12 bg-bg relative reveal">
+
+  <div class="max-w-6xl mx-auto">
+
+    <div class="flex flex-col md:flex-row items-center gap-16">
+
+      <!-- IMAGE -->
+      <div class="relative group md:w-1/2">
+        <div class="absolute inset-0 rounded-3xl bg-accent opacity-20 blur-3xl group-hover:opacity-30 transition"></div>
+
+        <img src="your-photo.png"
+             alt="Godwin Ashiekaa"
+             class="relative z-10 rounded-3xl w-full object-cover shadow-lg shadow-accent/20">
+      </div>
+
+      <!-- TEXT CONTENT -->
+      <div class="md:w-1/2 opacity-0 translate-y-10 about-reveal transition-all duration-700">
+
+        <h2 class="text-4xl md:text-5xl font-heading mb-6">About Me</h2>
+
+        <p class="text-textLight leading-relaxed text-lg mb-8">
+          I’m Godwin Ashiekaa — a frontend developer focused on
+          crafting interactive, intuitive digital experiences.
+          I love building work that blends clean design, smooth
+          interactions, and performant code. I enjoy the challenge
+          of transforming ideas into products that feel effortless.
+        </p>
+
+        <!-- QUICK FACT GRID -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+
+          <div class="p-6 bg-surface rounded-2xl border border-white/5 text-center shadow-md shadow-black/20">
+            <h3 class="text-xl font-semibold mb-1">Frontend Dev</h3>
+            <p class="text-textLight text-sm">HTML, Tailwind, JavaScript</p>
+          </div>
+
+          <div class="p-6 bg-surface rounded-2xl border border-white/5 text-center shadow-md shadow-black/20">
+            <h3 class="text-xl font-semibold mb-1">2+ Years</h3>
+            <p class="text-textLight text-sm">Coding experience</p>
+          </div>
+
+          <div class="p-6 bg-surface rounded-2xl border border-white/5 text-center shadow-md shadow-black/20">
+            <h3 class="text-xl font-semibold mb-1">Based In</h3>
+            <p class="text-textLight text-sm">Nigeria 🇳🇬</p>
+          </div>
+
+        </div>
+
+        <a href="#contact"
+           class="inline-block px-8 py-4 bg-accent text-black rounded-xl font-semibold tracking-wide hover:bg-accentSoft transition-all accent-btn">
+          Contact Me
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- === CONTACT SECTION === -->
+<section id="contact" class="bg-bg px-8 md:px-20 py-28 reveal">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+    <!-- Left: Contact intro -->
+    <div class="text-left">
+      <h2 class="text-4xl md:text-5xl font-heading mb-4">Let’s build something together</h2>
+      <p class="text-textLight max-w-lg mb-6">
+        I’m available for frontend roles, freelance projects, and collaborations.
+        Tell me about your project — timeline, budget, and the problem you want to solve.
+      </p>
+
+      <div class="space-y-4 text-textLight">
+        <div>
+          <div class="text-sm text-slate-400">Email</div>
+          <a href="mailto:ashiekaagodwin1@gmail.com" class="text-accent font-medium hover:underline">hello@godwinash.com</a>
+        </div>
+
+        <div>
+          <div class="text-sm text-slate-400">Location</div>
+          <div>Nigeria — Remote friendly</div>
+        </div>
+
+        <div>
+          <div class="text-sm text-slate-400">Availability</div>
+          <div>Open for hire — part-time / contract</div>
+        </div>
+      </div>
+
+      <div class="mt-8">
+        <a href="#projects"
+          class="inline-block px-5 py-3 rounded-xl bg-accent font-semibold shadow-[0_0_20px_rgba(124,58,237,0.45)] hover:shadow-[0_0_30px_rgba(124,58,237,0.6)] transition-all duration-300 accent-btn" id="mywork">
+          See My Work
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Right: Contact form -->
+    <form id="contactForm" class="bg-surface/60 backdrop-blur-md border border-[#222] rounded-2xl p-6 space-y-4" novalidate>
+      <!-- HONEYPOT — real humans NEVER see this -->
+      <div style="position:absolute;left:-9999px;top:-9999px;">
+        <label aria-hidden="true">
+          Do not fill this field
+          <input type="text" name="website" tabindex="-1" autocomplete="off" />
+        </label>
+      </div>
+      
+      <div>
+        <label for="name" class="text-sm text-textLight block mb-1">Your name</label>
+        <input id="name" name="name" type="text" required
+               class="w-full rounded-lg px-4 py-3 bg-[#0f0f10] border border-[#222] focus:border-accent focus:ring-0 outline-none text-white"
+               aria-required="true" />
+      </div>
+
+      <div>
+        <label for="email" class="text-sm text-textLight block mb-1">Email</label>
+        <input id="email" name="email" type="email" required
+               class="w-full rounded-lg px-4 py-3 bg-[#0f0f10] border border-[#222] focus:border-accent focus:ring-0 outline-none text-white"
+               aria-required="true" />
+      </div>
+
+      <div>
+        <label for="message" class="text-sm text-textLight block mb-1">Project brief</label>
+        <textarea id="message" name="message" rows="6" required
+                  class="w-full rounded-lg px-4 py-3 bg-[#0f0f10] border border-[#222] focus:border-accent focus:ring-0 outline-none text-white"
+                  aria-required="true" placeholder="Tell me a bit about the project, goals, and timeline..."></textarea>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button id="sendBtn" type="submit" class="inline-flex items-center gap-3 px-5 py-3 bg-accent text-black rounded-xl font-semibold accent-btn">
+          Send message
+        </button>
+
+        <div id="formStatus" class="text-sm text-textLight" role="status" aria-live="polite"></div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Separator to cover the gap and prevent ripples showing through -->
+<div class="section-separator" aria-hidden="true"></div>
+
+<!-- Footer -->
+<footer class="bg-bg border-t border-white/5 mt-32 reveal">
+  <div class="max-w-6xl mx-auto px-6 py-16">
+
+    <!-- Top -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
+
+      <!-- Brand -->
+      <div>
+        <h3 class="font-heading tracking-[.25em] text-sm text-white">
+          DEV • GODWIN
+        </h3>
+        <p class="mt-4 text-textLight text-sm leading-relaxed max-w-xs">
+          Frontend developer crafting thoughtful, performant digital experiences.
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <div class="flex flex-col gap-3 text-sm md:items-center">
+        <a href="#projects" class="text-textLight hover:text-accent transition">Work</a>
+        <a href="#process" class="text-textLight hover:text-accent transition">Process</a>
+        <a href="#about" class="text-textLight hover:text-accent transition">About</a>
+        <a href="#contact" class="text-textLight hover:text-accent transition">Contact</a>
+      </div>
+
+      <!-- Social -->
+      <div class="flex md:justify-end gap-6 text-sm">
+        <a href="https://github.com/yourusername"
+           target="_blank"
+           class="text-textLight hover:text-accent transition">
+          GitHub
+        </a>
+
+        <a href="https://linkedin.com/in/yourusername"
+           target="_blank"
+           class="text-textLight hover:text-accent transition">
+          LinkedIn
+        </a>
+
+        <a href="mailto:ashiekaagodwin1@gmail.com"
+           class="text-textLight hover:text-accent transition">
+          Email
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Bottom -->
+    <div class="mt-16 pt-6 border-t border-white/5 text-center text-xs text-textLight">
+      © <span id="year"></span> Godwin Ashiekaa. Built with precision and intent.
+    </div>
+
+  </div>
+</footer>
+
+
+  <!-- === RIPPLE CANVAS === -->
+  <canvas id="rippleCanvas"></canvas>
+
+  <!-- Tailwind config (define before loading the CDN) -->
+  <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          heading: ['Playfair Display', 'serif'],
+        },
+        colors: {
+          bg: "#0c0c0d",
+          surface: "#141416",
+          textLight: "#b4b4b8",
+          accent: "#7C3AED",
+          accentSoft: "#a78bfa",
+          color: "#ffffff",
+        },
+      }
+    }
+  }
+  </script>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- EmailJS (for contact/email features) -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs@3/dist/email.min.js"></script>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+/* ==================================================
+   Stylesheet: organized, variables, accessibility
+   ================================================== */
+
+:root{
+  --bg: #0c0c0d;
+  --surface: #141416;
+  --text: #ffffff;
+  --text-light: #b4b4b8;
+  --accent: #7C3AED;
+  --accent-soft: #a78bfa;
+}
+
+/* ------------------------
+   Base / Document Reset
+   ------------------------ */
+html,body{
+  height: 100%;
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tweak headings and hero title color */
+#heroTitle { color: rgba(255,255,255,0.85); }
+
+/* Accessibility: focus-visible outlines for keyboard users */
+:focus{
+  outline: none;
+}
+:focus-visible{
+  outline: 3px solid rgba(124,58,237,0.18);
+  outline-offset: 3px;
+}
+
+/* ------------------------
+   Navigation
+   ------------------------ */
+/* Ensure nav stays on top and interactive */
+#siteNav{ z-index: 1000; pointer-events: auto; }
+.nav-link, .mobile-link{ cursor: pointer; transition: color .2s ease; }
+.nav-link:hover, .mobile-link:hover{ color: var(--accent); }
+
+/* Hamburger helper (only used when markup provides lines) */
+#navButton{ position: relative; }
+#navButton .hamburger-line{ position: absolute; left: 0; width: 100%; height: 2px; background-color: currentColor; transition: transform .2s ease, opacity .2s ease; }
+#navButton .hamburger-line:nth-child(1){ top: 0; }
+#navButton .hamburger-line:nth-child(2){ top: 50%; transform: translateY(-50%); }
+#navButton .hamburger-line:nth-child(3){ bottom: 0; }
+#navButton.open .hamburger-line:nth-child(1){ transform: translateY(8px) rotate(45deg); }
+#navButton.open .hamburger-line:nth-child(2){ opacity: 0; }
+#navButton.open .hamburger-line:nth-child(3){ transform: translateY(-8px) rotate(-45deg); }
+
+/* ------------------------
+   Projects / Cards
+   ------------------------ */
+.project-image img{ filter: saturate(.9) contrast(.95); }
+
+/* 3D tilt effect grouped & simplified */
+.tilt-card{ transform-style: preserve-3d; perspective: 600px; }
+.project-inner{ transition: transform .45s ease, box-shadow .45s ease; transform-origin: center; }
+.tilt-card:hover .project-inner{ transform: rotateX(6deg) rotateY(6deg) scale(1.02); box-shadow: 0 12px 30px rgba(124,58,237,.25); }
+
+/* Project modal styling (scrollbar, spacing) */
+#projectModal .modal-content{ max-height: 90vh; }
+#projectModal .modal-content::-webkit-scrollbar{ width: 6px; }
+#projectModal .modal-content::-webkit-scrollbar-thumb{ background: rgba(124,58,237,.4); border-radius: 10px; }
+#projectModal .modal-content::-webkit-scrollbar-track{ background: transparent; }
+
+/* Project card surface darker (less 'glass') */
+.project-inner{ background-color: rgba(20,20,22,0.92); }
+
+/* Process line: center vertical line in timeline */
+#process-line{ display: block; }
+
+/* Hide process line on small screens */
+@media (max-width: 768px){
+  #process-line{ display: none; }
+}
+
+/* Separator used between sections to cover gaps where ripples might show */
+.section-separator{ height: 3rem; background-color: var(--surface); }
+
+/* Lightbox image interaction */
+#lightbox img{ cursor: zoom-in; transition: transform .25s ease; }
+#lightbox img.zoomed{ transform: scale(1.2); cursor: zoom-out; }
+
+/* ------------------------
+   Process / Timeline
+   ------------------------ */
+.process-step{ will-change: transform, opacity; }
+
+/* ------------------------
+   About / Quick cards
+   ------------------------ */
+/* No major styles required here—Tailwind handles layout */
+
+/* ------------------------
+   Contact form
+   ------------------------ */
+#contact a{ color: var(--accent); }
+#contact input::placeholder, #contact textarea::placeholder{ color: rgba(180,180,184,.4); }
+
+.form-success{ animation: fadeSlide .42s ease both; color: #b7f0d0; }
+.form-error{ animation: shake .38s ease both; color: #ff9b9b; }
+
+/* ------------------------
+   Footer & Helpers
+   ------------------------ */
+#mywork{ color: var(--bg); }
+
+/* Accent button utility (ensures consistent accent across elements) */
+.accent-btn{
+  background: var(--accent) !important;
+  color: #000 !important;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: none;
+  box-shadow: 0 8px 20px rgba(124,58,237,0.12);
+  transition: background .18s ease, transform .08s ease;
+}
+.accent-btn:hover{ background: var(--accent-soft) !important; transform: translateY(-1px); }
+.accent-btn[disabled]{ opacity: 0.6; cursor: not-allowed; transform: none; }
+
+/* Small variant for compact controls like project Live Demo buttons */
+.accent-btn--sm{
+  padding: 0.4rem 0.7rem !important;
+  font-size: 0.9rem !important;
+  border-radius: 0.55rem !important;
+  box-shadow: 0 6px 16px rgba(124,58,237,0.10) !important;
+}
+
+/* Sections that should hide ripples: opaque background + stacking context */
+#about, #contact, footer{
+  background-color: var(--surface);
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+}
+
+/* Ripple canvas (consolidated) */
+#rippleCanvas{ position: fixed; inset: 0; pointer-events: none; z-index: -1; }
+
+/* Reveal animation */
+.reveal{ opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+.reveal.show{ opacity: 1; transform: translateY(0); }
+
+/* NAV ALWAYS ABOVE CONTENT (safety) */
+#siteNav{ position: fixed; left: 0; top: 0; width: 100%; }
+
+/* ------------------------
+   Tiny animations and keyframes
+   ------------------------ */
+@keyframes blink{ 0%{ opacity: 1 } 50%{ opacity: 0 } 100%{ opacity: 1 } }
+@keyframes fadeSlide{ from{ opacity: 0; transform: translateY(6px) } to{ opacity: 1; transform: translateY(0) } }
+@keyframes shake{ 0%{ transform: translateX(0) } 25%{ transform: translateX(-6px) } 50%{ transform: translateX(6px) } 75%{ transform: translateX(-4px) } 100%{ transform: translateX(0) } }
+
+/* Scrollbar colour hint for Firefox */
+:root{ scrollbar-color: rgba(124,58,237,.35) transparent; }
+
