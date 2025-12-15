@@ -34,6 +34,8 @@ let lastTime = performance.now();
 
 const proximityRadius = 180; // px
 
+// Mobile detection: used to disable ripple effects on touch/coarse devices
+let isMobile = ('ontouchstart' in window) || navigator.maxTouchPoints > 0 || (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) || window.innerWidth < 768;
 
 /****************************************************
  * NAVIGATION
@@ -656,3 +658,4 @@ const revealObserver = new IntersectionObserver(
 );
 
 reveals.forEach(el => revealObserver.observe(el));
+
