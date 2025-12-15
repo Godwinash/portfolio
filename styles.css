@@ -150,6 +150,11 @@ body {
 /* Ripple canvas (consolidated) */
 #rippleCanvas{ position: fixed; inset: 0; pointer-events: none; z-index: -1; }
 
+/* Hide ripple canvas on small screens to avoid heavy draws and visual noise */
+@media (max-width: 768px){
+  #rippleCanvas{ display: none !important; }
+}
+
 /* Reveal animation */
 .reveal{ opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
 .reveal.show{ opacity: 1; transform: translateY(0); }
@@ -166,4 +171,5 @@ body {
 
 /* Scrollbar colour hint for Firefox */
 :root{ scrollbar-color: rgba(124,58,237,.35) transparent; }
+
 
