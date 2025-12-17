@@ -538,43 +538,38 @@ revealAbout();
 
 
 /* ============================
-   Contact form: validation + simulated send
-   - Shows status messages
-   - Safe honeypot to block bots
-   - Placeholder for EmailJS / backend integration
+   Contact form — Formspree
+   - Client-side validation
+   - Honeypot anti-spam
+   - Accessible status messages
    ============================ */
 
-(function contactFormModule(){
+(function contactFormModule() {
   const form = document.getElementById('contactForm');
   const sendBtn = document.getElementById('sendBtn');
   const status = document.getElementById('formStatus');
 
   if (!form) return;
 
-  // small helper
-  function setStatus(text, type='info') {
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/mdkaloln"; // ⬅️ replace
+
+  function setStatus(text, type = 'info') {
     status.textContent = text;
-    status.classList.remove('form-success','form-error');
+    status.classList.remove('form-success', 'form-error');
     if (type === 'success') status.classList.add('form-success');
     if (type === 'error') status.classList.add('form-error');
   }
 
-  // Validate simple email
-  function validEmail(e) {
-    return /\S+@\S+\.\S+/.test(e);
+  function validEmail(email) {
+    return /\S+@\S+\.\S+/.test(email);
   }
 
-  form.addEventListener('submit', (ev) => {
+  form.addEventListener('submit', async (ev) => {
     ev.preventDefault();
 
-    // Honeypot (hidden field) — anti-spam (guarded)
+    // Honeypot check
     const honeypot = form.querySelector('input[name="website"]');
-
-    if (honeypot && honeypot.value.trim() !== "") {
-        alert("Spam detected");
-        return; // stop form
-    }
-
+    if (honeypot && honeypot.value.trim() !== "") return;
 
     const name = form.name.value.trim();
     const email = form.email.value.trim();
@@ -584,47 +579,46 @@ revealAbout();
       setStatus('Please complete all fields.', 'error');
       return;
     }
+
     if (!validEmail(email)) {
       setStatus('Please enter a valid email address.', 'error');
       return;
     }
 
-    // Sending state
     sendBtn.disabled = true;
     sendBtn.setAttribute('aria-busy', 'true');
     setStatus('Sending…');
 
-    // If EmailJS is available, use it; otherwise simulate a send
-    if (window.emailjs) {
-      try { emailjs.init("fas5PKATKpE8nwJVM"); } catch (e) {}
-      emailjs.sendForm("service_5dti7sy", "template_qwmewq9", form)
-        .then(() => {
-          setStatus('Message sent. I will reply within 48 hours.', 'success');
-          form.reset();
-          sendBtn.disabled = false;
-          sendBtn.removeAttribute('aria-busy');
-        }).catch((err) => {
-          console.error('EmailJS error', err);
-          setStatus('Failed to send. Try again later.', 'error');
-          sendBtn.disabled = false;
-          sendBtn.removeAttribute('aria-busy');
-        });
-    } else {
-      // Simulated async send for local/dev
-      setTimeout(() => {
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: new FormData(form)
+      });
+
+      if (response.ok) {
         setStatus('Message sent. I will reply within 48 hours.', 'success');
         form.reset();
-        sendBtn.disabled = false;
-        sendBtn.removeAttribute('aria-busy');
-      }, 900);
+      } else {
+        const data = await response.json();
+        setStatus(data?.error || 'Something went wrong. Try again.', 'error');
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus('Network error. Please try again later.', 'error');
+    } finally {
+      sendBtn.disabled = false;
+      sendBtn.removeAttribute('aria-busy');
     }
   });
 
-  // Accessibility: clear status on input
   form.addEventListener('input', () => {
     if (status.textContent) setStatus('');
   });
 })();
+
 
 
 // Footer 
@@ -658,4 +652,5 @@ const revealObserver = new IntersectionObserver(
 );
 
 reveals.forEach(el => revealObserver.observe(el));
+
 
